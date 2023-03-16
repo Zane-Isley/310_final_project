@@ -1,0 +1,129 @@
+/**
+  *Name: Zane Isley
+  *Date: 03/06/2023
+  *Class: HCDE 310
+  *This is the style.css of my final project
+  */
+main {
+    height: fit;
+}
+
+body {
+    background-color: #afd996;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#banner {
+    position: absolute;
+    top: 50px;
+    left: 180px;
+    width: 250px;
+}
+
+#checkbox {
+    background-color: #83a86d;
+    margin: 10px;
+}
+
+#Drink_Clipart {
+    width: 150px;
+    float: left;
+    margin-left: 10px;
+    transform: rotate(-15deg);
+}
+
+#headline {
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+#pg2 {
+    width: 100%;
+    height: auto;
+}
+
+#dropdown {
+    margin-top: 20px;
+    margin-left: 85px;
+}
+
+#checkbox {
+    float: top;
+    width: 300px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#midsection {
+    width: 500px;
+}
+
+h3 {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 20px;
+}
+
+#Drink_Image {
+    width: 30%;
+    display: block;
+    margin: auto;
+    border-radius: 16px;
+    border: 4px solid #1b4a00;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    margin: auto;
+    margin-top: 10px;
+    justify-content: space-around;
+}
+
+#recipe, #back, #fetch {
+    background: #1b4a00;
+    padding: 15px 32px;
+    border-radius: 8px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    color: white;
+    border: 2px solid #1b4a00;
+    transition-duration: 0.4s;
+}
+
+#fetch {
+    margin-left: 165px;
+    margin-top: 20px;
+}
+
+#form-div {
+    max-width: 40%;
+}
+
+#drink-suggestion {
+    width: fit-content;
+    margin: auto;
+}
+
+#recipe p {
+    font: 16em;
+}
+
+
+
+#overall-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#recipe:hover, #back:hover, #fetch:hover {
+    background-color: #83a86d;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+  Name: Zane Isley
+  Date: 03/06/2023
+  Class: HCDE 310
+  This is the HTML code for my final project for HCDE 310
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>5 O'clock Anywhere</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="script" href="{{ url_for('static', filename='script.js') }}">
+
+    </head>
+    <body id="body">
+        <header>
+            <img src="{{ url_for('static', filename='Drink.png') }}" id="Drink_Clipart" alt="Sketch of a margarita.">
+            <h1 class="title" id="headline">5 O'Clock Anywhere</h1>
+        </header>
+        <img src="{{ url_for('static', filename='GreenSquiggle.png') }}" id="banner" alt="Green Ribbon">
+    <main>
+        {% if error %}
+            <h1> Oops looks like something went wrong or your search had no results. Try again / modify your search</h1>
+        {% else %}
+            {% if not potential_drink %}
+                <div id="overall-div">
+                    <div id = "form-div">
+                        <form action = "/drink/None" method = "post">
+                        <div id="dropdown">
+                            <label for="spirit-select">Choose a spirit:</label>
+                            <select name="spirits" id="spirit-select">
+                                <option>--Please Choose a Spirit--</option>
+                                <option>Vodka</option>
+                                <option>Gin</option>
+                                <option>Tequila</option>
+                                <option>Rum</option>
+                                <option>Bourbon</option>
+                                <option>Scotch</option>
+                                <option>Whiskey</option>
+                            </select>
+                        </div>
+                        <div id="midsection">
+                            <fieldset id="checkbox">
+                                <legend>Choose additional ingredients:</legend>
+                                <div>
+                                    <input type="checkbox" id="Lemon" name="Ingredient" value="Lemon" />
+                                    <label for="Lemon">Lemon</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Lime" name="Ingredient" value="Lime" />
+                                    <label for="Lime">Lime</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Simple Syrup" name="Ingredient" value="Simple Syrup" />
+                                    <label for="Simple Syrup">Simple Syrup</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Heavy Cream" name="Ingredient" value="Heavy Cream" />
+                                    <label for="Heavy Cream">Heavy Cream</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Milk" name="Ingredient" value="Milk" />
+                                    <label for="Milk">Milk</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Coffee" name="Ingredient" value="Coffee" />
+                                    <label for="Coffee">Coffee</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Water" name="Ingredient" value="Water" />
+                                    <label for="Water">Water</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Pineapple Juice" name="Ingredient" value="Pineapple Juice" />
+                                    <label for="Pineapple Juice">Pineapple Juice</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Cinnamon" name="Ingredient" value="Cinnamon" />
+                                    <label for="Cinnamon">Cinnamon</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Mint" name="Ingredient" value="Mint" />
+                                    <label for="Mint">Mint</label>
+                                </div>
+                            </fieldset>
+                        <button class="dropbtn" id="fetch">Find My Drink!</button>
+                        </div>
+                    </form>
+                    </div>
+
+                 {% if recipe and ingredients %}
+                    <div id="recipe-cont">
+                        <h3>Ingredients</h3>
+                        <ul>
+                        {% for ingredient in ingredients.split(',') %}
+                          <li>{{ ingredient.capitalize() }}</li>
+                        {% endfor %}
+                        </ul>
+                        <h3>Recipe</h3>
+                        <p>
+                            {{recipe}}
+                        </p>
+                    </div>
+        </div>
+            {% endif %}
+            {% else %}
+
+            <div id="pg2">
+                <div id="drink-suggestion">
+                    <h3 id="drink-title">{{potential_drink['strDrink']}}</h3>
+                </div>
+                <img src="{{potential_drink['strDrinkThumb']}}" id="Drink_Image" alt= "{{'Image of' + potential_drink['strDrink']}}">
+                <div id="buttons">
+                    <form action = "{{'/recipe/' + potential_drink['strDrink'] }}" method = "post">
+                        <button class="dropbtn" id="recipe">See Recipe!</button>
+                    </form>
+                    <form action = "/" method = "post">
+                        <button class="dropbtn" id="back">Pick Again...</button>
+                    </form>
+                </div>
+            </div>
+
+
+            {% endif %}
+        {% endif %}
+    </main>
+    </body>
+</html>
